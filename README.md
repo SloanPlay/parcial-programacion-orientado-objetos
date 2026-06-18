@@ -1,41 +1,41 @@
 # Liquidador de Nómina Industrial con Horas Extra Complejas
 
-Sistema en C# para procesar la nómina semanal (6 días laborables) de una empresa textil. Calcula el salario considerando horas normales, horas extra dobles, horas extra triples y deducción de ISR cuando aplica.
+Sistema en C# para procesar la nómina semanal (6 días laborables) de una empresa textil en República Dominicana. Calcula el salario en pesos dominicanos (RD$) considerando horas normales, horas extra dobles, horas extra triples y deducción de ISR cuando aplica.
 
 ## Reglas de negocio
 
-| Concepto               | Regla                              |
-|------------------------|------------------------------------|
-| Horas normales         | Primeras 40 horas a tarifa normal  |
-| Horas extra dobles     | Hora 41 a 48 (tarifa x 2)          |
-| Horas extra triples    | Horas > 48 (tarifa x 3)            |
-| ISR                    | 10% si el salario bruto > $1,200   |
-| Validación por día     | 0 a 12 horas, sin valores negativos|
+| Concepto               | Regla                                     |
+|------------------------|-------------------------------------------|
+| Horas normales         | Primeras 40 horas a tarifa normal         |
+| Horas extra dobles     | Hora 41 a 48 (tarifa x 2)                 |
+| Horas extra triples    | Horas > 48 (tarifa x 3)                   |
+| ISR                    | 10% si el salario bruto > RD$120,000.00   |
+| Validación por día     | 0 a 12 horas, sin valores negativos       |
 
 ## Tabla de pruebas
 
-| Caso | Empleado     | Valor Hora | Lun | Mar | Mié | Jue | Vie | Sáb | Total Horas | H. Normales | H. Dobles | H. Triples | Salario Bruto | ISR (10%) | Salario Neto |
-|------|-------------|------------|-----|-----|-----|-----|-----|-----|-------------|-------------|-----------|------------|---------------|-----------|--------------|
-| 1    | Ana López   | $10.00     | 7   | 7   | 7   | 7   | 6   | 6   | 40          | 40          | 0         | 0          | $400.00       | $0.00     | $400.00      |
-| 2    | Carlos Ruiz | $15.00     | 8   | 8   | 8   | 8   | 8   | 8   | 48          | 40          | 8         | 0          | $840.00       | $0.00     | $840.00      |
-| 3    | María Díaz  | $25.00     | 10  | 10  | 10  | 10  | 10  | 10  | 60          | 40          | 8         | 12         | $2,300.00     | $230.00   | $2,070.00    |
+| Caso | Empleado        | Valor Hora  | Lun | Mar | Mié | Jue | Vie | Sáb | Total Horas | H. Normales | H. Dobles | H. Triples | Salario Bruto   | ISR (10%)      | Salario Neto    |
+|------|----------------|-------------|-----|-----|-----|-----|-----|-----|-------------|-------------|-----------|------------|-----------------|----------------|-----------------|
+| 1    | Ana López      | RD$150.00   | 8   | 7   | 8   | 7   | 5   | 5   | 40          | 40          | 0         | 0          | RD$6,000.00     | RD$0.00        | RD$6,000.00     |
+| 2    | Carlos Ruiz    | RD$200.00   | 9   | 9   | 8   | 8   | 8   | 6   | 48          | 40          | 8         | 0          | RD$11,200.00    | RD$0.00        | RD$11,200.00    |
+| 3    | María Díaz     | RD$2,500.00 | 9   | 9   | 9   | 9   | 9   | 9   | 54          | 40          | 8         | 6          | RD$185,000.00   | RD$18,500.00   | RD$166,500.00   |
 
 ### Desglose por caso
 
-**Caso 1 — Semana normal (sin horas extra):**
-- 40 horas normales x $10.00 = $400.00
-- Salario bruto $400.00 ≤ $1,200 → No aplica ISR
+**Caso 1 — Operaria textil, semana normal (sin horas extra):**
+- 40 horas normales × RD$150.00 = RD$6,000.00
+- Salario bruto RD$6,000.00 ≤ RD$120,000.00 → No aplica ISR
 
-**Caso 2 — Horas extra dobles (sin ISR):**
-- 40 horas normales x $15.00 = $600.00
-- 8 horas dobles x $30.00 = $240.00
-- Salario bruto $840.00 ≤ $1,200 → No aplica ISR
+**Caso 2 — Operario de corte, horas extra dobles (sin ISR):**
+- 40 horas normales × RD$200.00 = RD$8,000.00
+- 8 horas dobles × RD$400.00 = RD$3,200.00
+- Salario bruto RD$11,200.00 ≤ RD$120,000.00 → No aplica ISR
 
-**Caso 3 — Horas extra triples con ISR:**
-- 40 horas normales x $25.00 = $1,000.00
-- 8 horas dobles x $50.00 = $400.00
-- 12 horas triples x $75.00 = $900.00
-- Salario bruto $2,300.00 > $1,200 → ISR 10% = $230.00
+**Caso 3 — Jefa de taller, horas extra triples con ISR:**
+- 40 horas normales × RD$2,500.00 = RD$100,000.00
+- 8 horas dobles × RD$5,000.00 = RD$40,000.00
+- 6 horas triples × RD$7,500.00 = RD$45,000.00
+- Salario bruto RD$185,000.00 > RD$120,000.00 → ISR 10% = RD$18,500.00
 
 ## Estructura del proyecto
 

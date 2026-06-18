@@ -107,7 +107,7 @@ class Program
         bool valorValido = false;
         while (!valorValido)
         {
-            Console.Write("Valor por hora ($): ");
+            Console.Write("Valor por hora (RD$): ");
             string? entrada = Console.ReadLine();
             if (decimal.TryParse(entrada, out valor) && valor > 0)
             {
@@ -130,7 +130,7 @@ class Program
         Console.WriteLine("          DESGLOSE DE NÓMINA");
         Console.WriteLine("===========================================");
         Console.WriteLine($"Empleado:            {emp.Nombre}");
-        Console.WriteLine($"Valor por hora:      ${emp.ValorHora:N2}");
+        Console.WriteLine($"Valor por hora:      RD${emp.ValorHora:N2}");
         Console.WriteLine("-------------------------------------------");
 
         string[] dias = { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
@@ -140,23 +140,23 @@ class Program
         Console.WriteLine("-------------------------------------------");
         Console.WriteLine($"Total horas:         {d.TotalHoras,5:N1}");
         Console.WriteLine();
-        Console.WriteLine($"Horas normales:      {d.HorasNormales,5:N1}  x  ${emp.ValorHora:N2}    = ${d.SalarioNormal,10:N2}");
-        Console.WriteLine($"Horas dobles:        {d.HorasDobles,5:N1}  x  ${emp.ValorHora * 2:N2}    = ${d.SalarioDoble,10:N2}");
-        Console.WriteLine($"Horas triples:       {d.HorasTriples,5:N1}  x  ${emp.ValorHora * 3:N2}    = ${d.SalarioTriple,10:N2}");
+        Console.WriteLine($"Horas normales:      {d.HorasNormales,5:N1}  x  RD${emp.ValorHora:N2}   = RD${d.SalarioNormal,10:N2}");
+        Console.WriteLine($"Horas dobles:        {d.HorasDobles,5:N1}  x  RD${emp.ValorHora * 2:N2}   = RD${d.SalarioDoble,10:N2}");
+        Console.WriteLine($"Horas triples:       {d.HorasTriples,5:N1}  x  RD${emp.ValorHora * 3:N2}   = RD${d.SalarioTriple,10:N2}");
         Console.WriteLine("-------------------------------------------");
-        Console.WriteLine($"Salario bruto:                         ${d.SalarioBruto,10:N2}");
+        Console.WriteLine($"Salario bruto:                        RD${d.SalarioBruto,10:N2}");
 
         if (d.ISR > 0)
         {
-            Console.WriteLine($"ISR (10%):                            -${d.ISR,10:N2}");
+            Console.WriteLine($"ISR (10%):                           -RD${d.ISR,10:N2}");
             Console.WriteLine("-------------------------------------------");
-            Console.WriteLine($"SALARIO NETO:                          ${d.SalarioNeto,10:N2}");
+            Console.WriteLine($"SALARIO NETO:                         RD${d.SalarioNeto,10:N2}");
         }
         else
         {
-            Console.WriteLine($"ISR (10%):                              $  ---.--");
-            Console.WriteLine($"SALARIO NETO:                          ${d.SalarioNeto,10:N2}");
-            Console.WriteLine("  (No aplica ISR: salario bruto <= $12,000.00)");
+            Console.WriteLine($"ISR (10%):                             RD$    ---.--");
+            Console.WriteLine($"SALARIO NETO:                         RD${d.SalarioNeto,10:N2}");
+            Console.WriteLine("  (No aplica ISR: salario bruto <= RD$120,000.00)");
         }
 
         Console.WriteLine("===========================================\n");
