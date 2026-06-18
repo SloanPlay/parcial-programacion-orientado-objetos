@@ -2,7 +2,7 @@
 
 Sistema en C# para procesar la nomina semanal (6 dias laborables) de una empresa textil en Republica Dominicana. Calcula el salario en pesos dominicanos (RD$) considerando horas normales, horas extra dobles, horas extra triples y deduccion de ISR cuando aplica.
 
-El comprobante de pago se emite bajo el membrete de **Textiles Caribe, S.R.L.** con formato profesional incluyendo datos de la empresa, del empleado, registro de asistencia y desglose completo del salario.
+El comprobante de pago se emite bajo el membrete de **Textiles CAMPUSANO, S.R.L.** con formato profesional incluyendo datos de la empresa, del empleado, registro de asistencia y desglose completo del salario.
 
 ## Reglas de negocio
 
